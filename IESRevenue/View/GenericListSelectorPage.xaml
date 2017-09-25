@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IESRevenue.View.GenericListSelectorPage">
+
+  <Grid x:Name="MainGrid" RowSpacing="5" Padding="0,10,0,0">
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height ="Auto"/>
+      <RowDefinition Height ="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0" ColumnSpacing="25">
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <StackLayout Orientation="Vertical" Padding ="10,0,5,0">
+        <Label Grid.Column="0" Text="Cancel" HorizontalOptions="Start" Style="{x:Static helper:Styles.LabelBlueButton}" VerticalOptions="Center">
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnDismiss" />
+          </Label.GestureRecognizers>
+        </Label>
+      </StackLayout>
+      <Label Grid.Column="1" Text="{Binding Title}" StyleId="GenericSelectorTitle" HorizontalOptions="StartAndExpand" FontSize="Medium" XAlign="Center" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+    </Grid>
+    <ListView Grid.Row="1" x:Name="ItemListView" StyleId="GenericSelectorListView" ItemTapped="OnListItemTapped">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <StackLayout StyleId="GenericSelectorListViewCell" Padding="10,0,5,0">
+                <Label Text="{Binding SelectableString}" StyleId="GenericListViewCellText"
+                       VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                </Label>
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </Grid>
+
+</ContentPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"     
+             xmlns:Controls="clr-namespace:IESRevenue.Controls;assembly=IESRevenue"
+             x:Class="IESRevenue.View.IBGDetails" BackgroundColor="Gray" Title="IESRevenue">
+
+  <AbsoluteLayout>
+    <ContentView AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+      <Grid Padding ="20,15,0,0" RowSpacing="15" ColumnSpacing="15">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--<Button Text="Select" BackgroundColor="Transparent" TextColor="Black" BorderColor="Black" Clicked="OnPickerClicked"></Button>-->
+
+                <Controls:DropDownPicker BackgroundColor="White" Title="Select IBU" Grid.Row="0" Grid.Column="0" x:Name="IBUPicker"  HorizontalOptions="FillAndExpand" >
+        </Controls:DropDownPicker>
+
+                <Controls:DropDownPicker BackgroundColor="White" Grid.Row="0" Grid.Column="1" x:Name="PIDPicker"  HorizontalOptions="FillAndExpand" Title="Select Project" IsEnabled="false">
+        </Controls:DropDownPicker>
+
+                <Controls:DropDownPicker BackgroundColor="White" Grid.Row="1" Grid.Column="0" x:Name="YearPicker"  Title="Select Year" HorizontalOptions="FillAndExpand" >
+                    <Picker.Items>
+            <x:String>2017</x:String>
+            <x:String>2018</x:String>
+          </Picker.Items>
+        </Controls:DropDownPicker>
+
+                <Controls:DropDownPicker BackgroundColor="White" Grid.Row="1" Grid.Column="1" x:Name="QuarterPicker"  Title="Select Quarter" HorizontalOptions="FillAndExpand" >
+          <Picker.Items>
+            <x:String>Q1</x:String>
+            <x:String>Q2</x:String>
+            <x:String>Q3</x:String>
+            <x:String>Q4</x:String>
+            <x:String>ALL</x:String>
+          </Picker.Items>
+        </Controls:DropDownPicker>
+
+        <Button Grid.Row="2" Grid.Column="0" Text="Generate Graph" TextColor="White" BackgroundColor="Black" VerticalOptions="Center" Clicked="OnGenerateGraphClicked"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Text="More Graphs" TextColor="White" BackgroundColor="Black" VerticalOptions="Center" Clicked="OnMoreGraphsClicked" x:Name="btnMoreGraphs" IsEnabled="False"></Button>
+
+                <oxy:PlotView x:Name="graph" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" Grid.ColumnSpan="3"
+         Model="{Binding plotModel}" IsVisible="true"/>
+      </Grid>
+    </ContentView>
+  </AbsoluteLayout>
+
+</ContentPage>
